@@ -84,12 +84,9 @@ var Report = React.createClass({
               if (time >= quiz.start && time <= quiz.end) {
                 var student = students[sessionId];
                 if (student === undefined) {
-                  students[sessionId] = { smile: 0, focus: 0, sleep: 0, num: 0 };
+                  students[sessionId] = { smile: 0, focus: 0, sleep: 0, num: 0, name: studentAtTime.name };
                   student = students[sessionId];
                 }
-                var smilePerc = studentAtTime.data.smile * 100;
-                var sleepPerc = studentAtTime.data.sleep ? 100 : 0;
-                var focusPerc = studentAtTime.data.lookAtTheScreen ? 0 : 100;
 
                 student.num++;
                 student.smile += smilePerc;
@@ -170,15 +167,38 @@ var Report = React.createClass({
                             )
                           )
                         ),
-                        React.createElement('div', { style: { position: 'absolute', fontWeight: 'bold', fontSize: '48px', color: circle.color, textAlign: 'center', lineHeight: '164px', height: '90%', backgroundColor: '#EBEFF0', width: '90%', top: '5%', left: '5%', borderRadius: '50%' } }, circle.perc + '%')
+                        React.createElement('div', { style: { position: 'absolute', fontWeight: 'bold', fontSize: '48px', color: circle.color, textAlign: 'center', lineHeight: '164px', height: '90%', backgroundColor: '#EBEFF0', width: '90%', top: '5%', left: '5%', borderRadius: '50%' } }, circle.perc.toFixed(0) + '%')
                       )
                     );
                   })
+                ),
+                React.createElement('div', { style: { fontSize: '24px', color: '#666666', fontWeight: 'bold', padding: '5px' } }, 'Class'),
+                React.createElement('table', { style: { fontSize: '24px', color: '#666666', fontWeight: 'bold', width: '100%', padding: '5px' } },
+                  React.createElement('thead', {  },
+                    React.createElement('tr', { style: { backgroundColor: '#EBEFF0', height: '80px' } },
+                      React.createElement('th', { style: { backgroundColor: 'white', width: '10%' } }),
+                      React.createElement('th', { style: { width: '30%' } }, 'Smile'),
+                      React.createElement('th', { style: { width: '30%' } }, 'Out of focus'),
+                      React.createElement('th', { style: { width: '30%' } }, 'Sleep')
+                    )
+                  ),
+                  React.createElement('tbody', {  },
+                    Object.keys(students).map(function( studentKey ) {
+                      var student = students[studentKey];
+                      return (
+                        React.createElement('tr', { style: { backgroundColor: '#EBEFF0', height: '80px' } },
+                          React.createElement('td', { style: { textAlign: 'center' } }, student.name),
+                          React.createElement('td', { style: { textAlign: 'center', backgroundColor: 'rgba(42,55,142,0.4)' } }, student.smile.toFixed(0) + '%'),
+                          React.createElement('td', { style: { textAlign: 'center', backgroundColor: 'rgba(226,110,23,0.4)' } }, student.focus.toFixed(0) + '%'),
+                          React.createElement('td', { style: { textAlign: 'center', backgroundColor: 'rgba(224,25,69,0.4)' } }, student.sleep.toFixed(0) + '%')
+                        )
+                      );
+                    })
+                  )
                 )
               )
             );
-          }),
-          React.createElement('div', { style: { backgroundColor: 'red' } }, '123123')
+          })
         )
       )
     );
