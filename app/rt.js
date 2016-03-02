@@ -56,7 +56,8 @@ var Rt = React.createClass({
           { style: { display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '50px' } },
           Object.keys(_this.state.data).map(function (key) {
             var student = _this.state.data[key];
-            var rotation = Math.floor(student.data.smile * 180);
+            var smileNum = student.data.sleep ? 0 : (student.data.lookAtTheScreen ? student.data.smile : 0);
+            var rotation = Math.floor(smileNum * 180);
             var fill_rotation = rotation;
             var fix_rotation = rotation * 2;
 
