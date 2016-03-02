@@ -30,8 +30,6 @@ var Rt = React.createClass({
 
   render: function() {
     var _this = this;
-
-
     return (
       React.createElement(
         'div',
@@ -43,12 +41,12 @@ var Rt = React.createClass({
             React.createElement('span', { style: { paddingLeft: '5px' } }, 'Smile')
           ),
           React.createElement('span', { style: { paddingRight: '50px' } },
-            React.createElement('img', { src: 'smile/sleep-color.png', style: { verticalAlign: 'middle'  } }),
-            React.createElement('span', { style: { paddingLeft: '5px' } }, 'Sleep')
-          ),
-          React.createElement('span', { style: { paddingRight: '50px' } },
             React.createElement('img', { src: 'smile/atten-color.png', style: { verticalAlign: 'middle'  } }),
             React.createElement('span', { style: { paddingLeft: '5px' } }, 'Out of focus')
+          ),
+          React.createElement('span', { style: {  } },
+            React.createElement('img', { src: 'smile/sleep-color.png', style: { verticalAlign: 'middle'  } }),
+            React.createElement('span', { style: { paddingLeft: '5px' } }, 'Sleep')
           )
         ),
         React.createElement(
@@ -64,20 +62,10 @@ var Rt = React.createClass({
             return React.createElement(
               'div',
               { style: { margin: '20px', border: '4px solid', borderColor:  student.data.sleep ? '#e01945' : (student.data.lookAtTheScreen ? '#2a378e' : '#e26e17'), backgroundColor: '#EBEFF0', borderRadius: '20px', position: 'relative', height: '270px', width: '250px' } },
-              React.createElement('img', { src: 'https://ribit.net/static/images/face-financial-crimes-student.jpg',
-                style: {
-                  border: '13px solid white',
-                  boxShadow: '0 0 0 4px #6d7482',
-                  position: 'absolute',
-                  left: '50%',
-                  top: '50px',
-                  marginLeft: '-63px',
-                  width: '100px',
-                  borderRadius: '50%'
-                }}),
-              React.createElement('img', { src: student.data.sleep ? 'smile/sleep-color.png' : 'smile/sleep.png', style: { position: 'absolute', top: '80px', right: '20px' } }),
-              React.createElement('img', { src: student.data.lookAtTheScreen ? 'smile/atten.png' : 'smile/atten-color.png', style: { position: 'absolute', top: '80px', left: '20px' } }),
-              React.createElement('div', { style: { position: 'relative', top: '10px', left: '50%', marginLeft: '-30px' } },
+              React.createElement('img', { src: student.pic, style: { border: '13px solid transparent', boxShadow: '0 0 0 4px #6d7482', position: 'absolute', left: '50%', top: '60px', marginLeft: '-63px', width: '100px', borderRadius: '50%' }}),
+              React.createElement('img', { src: student.data.sleep ? 'smile/sleep-color.png' : 'smile/sleep.png', style: { position: 'absolute', top: '90px', right: '20px' } }),
+              React.createElement('img', { src: student.data.lookAtTheScreen ? 'smile/atten.png' : 'smile/atten-color.png', style: { position: 'absolute', top: '90px', left: '20px' } }),
+              React.createElement('div', { style: { position: 'relative', top: '20px', left: '50%', marginLeft: '-30px' } },
                 React.createElement(
                   "div",
                   { className: "radial-progress" },
@@ -99,7 +87,7 @@ var Rt = React.createClass({
                 ),
                 React.createElement('img', { src: 'smile/smile.png', style: { position: 'absolute', top: 0 } })
               ),
-              React.createElement('div', { style: { textAlign: 'center', paddingTop: '120px', fontSize: '22px', color: '#6d7482' } }, student.name)
+              React.createElement('div', { style: { textAlign: 'center', paddingTop: '140px', fontSize: '22px', color: '#6d7482', fontWeight: 'bold' } }, student.name)
             );
           })
         )
