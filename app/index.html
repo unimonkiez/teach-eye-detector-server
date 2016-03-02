@@ -42,6 +42,34 @@
       clip: rect(0px, 30px, 60px, 0px);
       background-color: #2a378e;
     }
+
+    .big-radial-progress {
+      width: 200px;
+      height: 200px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    .big-radial-progress .circle .mask,
+    .big-radial-progress .circle .fill {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      border-radius: 50%;
+      transition: -webkit-transform 1s;
+      transition: -ms-transform 1s;
+      transition: transform 1s;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .big-radial-progress .circle .mask {
+      clip: rect(0px, 200px, 200px, 100px);
+    }
+
+    .big-radial-progress .circle .mask .fill {
+      clip: rect(0px, 100px, 200px, 0px);
+      background-color: #2a378e;
+    }
   </style>
 </head>
 

@@ -31,23 +31,34 @@ app.get('/api/delete', (req, res) => {
   });
   return res.send('OK');
 });
-app.get('/api/post', (req, res) => {
-  const data = JSON.parse(req.query.data);
+const addData = data => {
   console.log(data);
   datas.push(data);
-  if (data.name.toLowerCase() === 'yuval') {
-    data.pic = 'profiles/yuval.jpg';
+  if (rt[data.sessionId] === undefined) {
+    if (data.name.toLowerCase() === 'yuval') {
+      data.pic = 'profiles/yuval.jpg';
+    } else {
+      data.pic = randomPics[Math.floor(Math.random() * randomPicsLength)];
+    }
   } else {
-    data.pic = randomPics[Math.floor(Math.random() * randomPicsLength)];
+    data.pic = rt[data.sessionId].pic;
   }
   rt[data.sessionId] = data;
+}
+app.get('/api/post', (req, res) => {
+  const data = JSON.parse(req.query.data);
+  addData(data);
+  return res.send('OK');
+});
+app.post('/api/post', (req, res) => {
+  const data = req.body;
+  addData(data);
   return res.send('OK');
 });
 app.get('/api/getAll', (req, res) => {
   return res.send(datas);
 });
 app.get('/api/get', (req, res) => {
-  console.log(Object.keys(rt).length);
   return res.send(rt);
 });
 
