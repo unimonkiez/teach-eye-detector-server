@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>It's about Time to know</title>
-    <script src="react/react.min.js"></script>
-    <script src="react/react-dom.min.js"></script>
-    <script src="app.js"></script>
-    <script src="report.js"></script>
-    <script src="rt.js"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script>
-      ReactDOM.render(
-        React.createElement(App),
-        document.getElementById('app')
-      );
-    </script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>It's about Time to know</title>
+  <script src="react/react.min.js"></script>
+  <script src="react/react-dom.min.js"></script>
+  <script src="app.js"></script>
+  <script src="report.js"></script>
+  <script src="rt.js"></script>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .radial-progress {
+      width: 60px;
+      height: 60px;
+      background-color: #cccccc;
+      border-radius: 50%;
+    }
+
+    .radial-progress .circle .mask,
+    .radial-progress .circle .fill {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      border-radius: 50%;
+      transition: -webkit-transform 1s;
+      transition: -ms-transform 1s;
+      transition: transform 1s;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .radial-progress .circle .mask {
+      clip: rect(0px, 60px, 60px, 30px);
+    }
+
+    .radial-progress .circle .mask .fill {
+      clip: rect(0px, 30px, 60px, 0px);
+      background-color: #2a378e;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    ReactDOM.render(
+      React.createElement(App),
+      document.getElementById('app')
+    );
+  </script>
+</body>
+
 </html>
